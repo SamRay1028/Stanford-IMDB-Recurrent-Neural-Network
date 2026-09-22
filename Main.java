@@ -5,7 +5,8 @@ public class Main {
     public static void main(String[] args) {
         //I used the Stanford IMDB data set to train and test my network. The data set is a collection of 50,000 movie reviews. 25,000 are positive and 25,000 are negative.
         System.out.println("Hello");
-        Network network = new Network(new ArrayList<>(List.of(40, 100, 2)));
+        int maxSentenceLength = 39;
+        Network network = new Network(new ArrayList<>(List.of(maxSentenceLength + 1, 100, 2)));
         DataReader dataReader = new DataReader();
         ArrayList<String> vocabData = dataReader.readVocabData("/Users/samraya/Desktop/aclImdb/imdb.vocab");
         ArrayList<Double> polarData = dataReader.readPolarData("/Users/samraya/Desktop/aclImdb/imdbEr.txt");
@@ -36,7 +37,6 @@ public class Main {
         int miniBatchSize = 100;
         int epoch = 0;
         int size = 0;
-        int maxSentenceLength = 39;
         int sentenceNumber = 0;
         int totalNumOfSentences = 0;
         int count = 0;
@@ -352,14 +352,14 @@ public class Main {
         for(int i = 0; i < orgPolarData.size(); i++){
             for(int j = 0; j < orgPolarData.get(i).size(); j++){
                 size = orgPolarData.get(i).get(j).size();
-                if(size <= 40){
-                    for(int k = 0; k < 40 - size; k++){
+                if(size <= maxSentenceLength + 1){
+                    for(int k = 0; k < maxSentenceLength + 1 - size; k++){
                         //System.out.println(orgPolarData.get(i).get(j));
                         //orgPolarData.get(i).get(j).add(0.0);
                     }
                 }
                 else {
-                    while(orgPolarData.get(i).get(j).size() > 40){
+                    while(orgPolarData.get(i).get(j).size() > maxSentenceLength + 1){
                         orgPolarData.get(i).get(j).remove(orgPolarData.get(i).get(j).size() - 1);
                     }
                 }
