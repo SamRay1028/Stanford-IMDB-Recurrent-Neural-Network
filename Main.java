@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         //I used the Stanford IMDB data set to train and test my network. The data set is a collection of 50,000 movie reviews. 25,000 are positive and 25,000 are negative.
         System.out.println("Hello");
-        Network network = new Network();
+        Network network = new Network(new ArrayList<>(List.of(40, 100, 2)));
         DataReader dataReader = new DataReader();
         ArrayList<String> vocabData = dataReader.readVocabData("/Users/samraya/Desktop/aclImdb/imdb.vocab");
         ArrayList<Double> polarData = dataReader.readPolarData("/Users/samraya/Desktop/aclImdb/imdbEr.txt");
