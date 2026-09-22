@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Network {
-    int numLayers = 3;
+    int numLayers = 0;
     int numSentences = 10;
     double c = 10000;
     double regularization = 0;
@@ -26,7 +26,7 @@ public class Network {
     //Below, sets up an instance of the Network class, this includes seting up the weights, biases, and neurons that make up the neural network's structure
     public Network(ArrayList<Integer> input_layers) {
         layers = input_layers;
-
+        numLayers = input_layers.size();
         /*
         layers.add(40);
         layers.add(100);
