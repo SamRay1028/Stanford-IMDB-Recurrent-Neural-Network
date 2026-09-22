@@ -24,10 +24,14 @@ public class Network {
     ArrayList<ArrayList<Double>> data = new ArrayList<ArrayList<Double>>();
 
     //Below, sets up an instance of the Network class, this includes seting up the weights, biases, and neurons that make up the neural network's structure
-    public Network() {
+    public Network(ArrayList<Integer> input_layers) {
+        layers = input_layers;
+
+        /*
         layers.add(40);
         layers.add(100);
         layers.add(2);
+        */
         double[] h = new double[0];
         for (int i = 0; i < numLayers; i++) {
             h = new double[layers.get(i)];
